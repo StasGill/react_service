@@ -65,3 +65,25 @@
 .second_container {
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .header {
+    font-size: 52px;
+  }
+  .main_section {
+    padding: 20px 12px 100px 12px;
+  }
+  .header_second {
+    font-size: 52px;
+    margin-bottom: 12px;
+  }
+  .second_section {
+    border-radius: 18px 18px 0 0;
+  }
+  .promo-card {
+    margin: 6px;
+  }
+  .card_container {
+    padding: 12px;
+  }
+}

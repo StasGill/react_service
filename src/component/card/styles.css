@@ -11,7 +11,7 @@
 }
 
 .promo-image {
-  max-width: 300px;
+  width: 100%;
   border-radius: 16px 16px 0 0;
 }
 
@@ -105,3 +105,9 @@ iframe {
 .price-item:last-child {
   border-bottom: none;
 }
+
+/* @media (max-width: 768px) {
+  .promo-card {
+    margin: 12px;
+  }
+} */

@@ -1,8 +1,41 @@
 import React, { useState } from "react";
 import "./styles.css";
-import sampleImage from "../../img/printer.jpg"; // Подставь свой путь к изображению
 
-const PromoCard = () => {
+const TruncatedText = (text, maxLength) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleText = () => {
+    setIsExpanded((prev) => !prev);
+  };
+
+  const renderText = () => {
+    if (isExpanded || text.length <= maxLength) {
+      return text;
+    }
+    return text.slice(0, maxLength) + "...";
+  };
+
+  return (
+    <div>
+      <p>{renderText()}</p>
+      {text.length > maxLength && (
+        <button
+          onClick={toggleText}
+          style={{
+            background: "none",
+            border: "none",
+            color: "blue",
+            cursor: "pointer",
+          }}
+        >
+          {isExpanded ? "Скрыть" : "Показать полностью"}
+        </button>
+      )}
+    </div>
+  );
+};
+
+const PromoCard = ({ item }) => {
   const [showPricing, setShowPricing] = useState(false);
 
   const togglePricing = () => {
@@ -11,13 +44,10 @@ const PromoCard = () => {
 
   return (
     <div className="promo-card">
-      <img src={sampleImage} alt="Печать" className="promo-image" />
+      <img src={item?.image} alt="Печать" className="promo-image" />
       <div className="inner_container">
-        <h2 className="promo-title">Подключайся и печатай</h2>
-        <p className="promo-description">
-          Удобный и быстрый сервис печати прямо из твоего устройства. Где бы ты
-          ни был — сделаем всё красиво.
-        </p>
+        <h2 className="promo-title">{item?.header}</h2>
+        <p className="promo-description">{TruncatedText(item?.text, 300)}</p>
 
         <div className="pricing-section">
           <button className="pricing-toggle" onClick={togglePricing}>
